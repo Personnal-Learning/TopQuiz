@@ -1,19 +1,23 @@
-package com.mortieresteban.topquiz;
+package com.mortieresteban.topquiz.controller;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+
+import com.mortieresteban.topquiz.R;
+import com.mortieresteban.topquiz.model.User;
 
 public class MainActivity extends AppCompatActivity {
 
     EditText mNameEditText;
     Button mPlayButton;
+    private User mUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +51,9 @@ public class MainActivity extends AppCompatActivity {
         mPlayButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent gameActivityIntent = new Intent(MainActivity.this, GameActivity.class);
+                startActivity(gameActivityIntent);
+                mUser.setFirstName(mNameEditText.getText().toString());
             }
         });
 
