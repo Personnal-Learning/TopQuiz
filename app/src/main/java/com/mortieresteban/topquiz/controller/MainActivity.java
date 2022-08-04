@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     EditText mNameEditText;
     Button mPlayButton;
     private User mUser;
+    private static final int GAME_ACTIVITY_REQUEST_CODE = 42;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent gameActivityIntent = new Intent(MainActivity.this, GameActivity.class);
-                startActivity(gameActivityIntent);
+                startActivityForResult(gameActivityIntent, GAME_ACTIVITY_REQUEST_CODE);
                 mUser.setFirstName(mNameEditText.getText().toString());
             }
         });
